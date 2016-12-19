@@ -51,7 +51,7 @@ function getIndexPageText($excerpt)
     $list = explode('.', $excerpt, 3);
     return (count($list) < 3)
         ? implode(' ', $list)
-        : '<p class="lead">' . implode('. ', array_slice($list, 0, 2)) . '</p><p>' . substr($list[2], 0, 400) . '...</p>';
+        : '<p class="lead">' . implode('. ', array_slice($list, 0, 2)) . '.</p><p>' . substr($list[2], 0, 400) . '...</p>';
 }
 
 /**
@@ -162,7 +162,7 @@ function getMainMenu()
     ];
     $replacements = [
         'dropdown-menu',
-        '$1<a $2 class="dropdown-toggle" data-toggle="dropdown">$3 <b class="caret"></b></a>',
+        '$1<a $2 class="dropdown-toggle" data-toggle="dropdown1">$3 <b class="caret"></b></a>',
     ];
     $menu = preg_replace($search, $replacements, $menu);
     return $menu;

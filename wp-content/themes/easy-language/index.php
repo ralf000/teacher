@@ -7,7 +7,7 @@
     <!-- Headline Text
     ================================================== -->
     <div class="span4">
-        <? $about = get_post(5, OBJECT, 'display'); ?>
+        <? $about = get_post(2, OBJECT, 'display'); ?>
         <?php if ($about): ?>
             <h3><?= $about->post_title; ?></h3>
             <p class="lead"><?= getIndexPageText($about->post_content) ?></p>

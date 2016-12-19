@@ -18,7 +18,7 @@
         <div class="row"><!-- Begin Sub Footer -->
             <div class="span12 footer-col footer-sub">
                 <div class="row no-margin">
-                    <div class="span6"><span class="left">Copyright <?= date('Y') ?>. All rights reserved.</span>
+                    <div class="span6"><span class="left">Easy-Language <?= date('Y') ?>. Все права защищены.</span>
                     </div>
 
                     <div class="span6">

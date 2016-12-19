@@ -111,6 +111,7 @@ blockquote.pull-right {
 
 .logo h5 {
     display: inline-block;
+    margin-top: 0;
 }
 
 .headline {
@@ -1371,6 +1372,8 @@ a.accordion-toggle {
 
 body > .container{
     background-color: rgba(255,255,255,0.8);
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 #fa_gallery-2 {
@@ -1383,17 +1386,17 @@ body > .container{
     float: right;
 }
 
-.footer-container .menu ul li {
+.footer-container ul.footer_menu li {
     display: inline-block;
     padding-right: 5px;
     padding-bottom: 0;
 }
-.footer-container .menu ul li a{
+.footer-container ul.footer_menu li a{
     border-right: 1px solid white;
     padding-right: 10px;
 }
 
-.footer-container .menu  ul li:last-child a{
+.footer-container ul.footer_menu li:last-child a{
     border: none;
 }
 
@@ -1411,6 +1414,14 @@ body > .container{
 
 .tab-pane .widgettitle{
     display: none;
+}
+
+.dropdown-menu .active{
+    padding-bottom: 1px;
+}
+
+.dropdown-menu .active > a, .dropdown-menu .active > a:hover, .dropdown-menu .active{
+    background: #d8450b none;
 }
 
 
