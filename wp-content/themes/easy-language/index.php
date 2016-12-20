@@ -11,7 +11,7 @@
         <?php if ($about): ?>
             <h3><?= $about->post_title; ?></h3>
             <p class="lead"><?= getIndexPageText($about->post_content) ?></p>
-            <a href="<?= $about->guid ?>"><i class="icon-plus-sign"></i>Read More</a>
+            <a href="<?= $about->guid ?>"><i class="icon-plus-sign"></i>Читать далее</a>
         <?php else: ?>
             <h3>Здесь пусто</h3>
         <?php endif; ?>
@@ -19,21 +19,21 @@
 </div><!-- End Headline -->
 
 <?php
-$gallery = new WP_Query([
+$portfolio = new WP_Query([
     'post_type' => 'post',
-    'cat' => 6,
-    'posts_per_page' => 12
+    'cat' => 5,
+    'posts_per_page' => 8
 ]);
 ?>
-<? if ($gallery->have_posts()): ?>
+<? if ($portfolio->have_posts()): ?>
     <div class="row gallery-row"><!-- Begin Gallery Row -->
 
         <div class="span12">
             <h5 class="title-bg">
-                <? if (category_description(6)) echo titleGenerator(category_description(6)) ?>
-                <button onclick="location.href='<?= get_category_link(6); ?>//'"
+                <? if (get_cat_name(5)) echo get_cat_name(5) ?>
+                <button onclick="location.href='<?= get_category_link(5); ?>'"
                         class="btn btn-mini btn-inverse hidden-phone"
-                        type="button"><?= get_the_category_by_ID(6) ?>
+                        type="button"><?= get_the_category_by_ID(5) ?>
                 </button>
             </h5>
 
@@ -43,7 +43,7 @@ $gallery = new WP_Query([
                 <ul class="gallery-post-grid holder">
 
                     <!-- Gallery Item 1 -->
-                    <?php while ($gallery->have_posts()) : $gallery->the_post(); ?>
+                    <?php while ($portfolio->have_posts()) : $portfolio->the_post(); ?>
                         <li class="span3 gallery-item" data-id="id-<? the_ID() ?>" data-type="illustration">
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
@@ -78,26 +78,26 @@ $gallery = new WP_Query([
     <div class="span6">
 
         <?php
-        $blog = new WP_Query([
+        $publications = new WP_Query([
             'post_type' => 'post',
-            'cat' => 2,
+            'cat' => 1,
             'post_count' => 6
         ]);
         ?>
-        <? if ($blog->have_posts()): ?>
+        <? if ($publications->have_posts()): ?>
             <h5 class="title-bg">
-                <? if (category_description(2)) echo titleGenerator(category_description(2)) ?>
+                <? if (get_cat_name(1)) echo get_cat_name(1) ?>
                 <button id="btn-blog-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
                 <button id="btn-blog-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
             </h5>
 
-            <div id="blogCarousel" class="carousel slide ">
+            <div id="blogCarousel" class="carousel slide">
 
                 <!-- Carousel items -->
                 <div class="carousel-inner">
 
                     <!-- Blog Item -->
-                    <?php while ($blog->have_posts()) : $blog->the_post(); ?>
+                    <?php while ($publications->have_posts()) : $publications->the_post(); ?>
                         <!--первая запись блока помечается классом active-->
                         <div class="<?php if (!isset($flag)) echo 'active';
                         $flag = true; ?> item">
@@ -121,7 +121,7 @@ $gallery = new WP_Query([
                                 </ul>
                             </div>
                             <p class="blog-summary"><?= strip_tags(get_the_excerpt()) ?> <a
-                                    href="<?php the_permalink() ?>">Read more</a>
+                                    href="<?php the_permalink() ?>">Читать далее</a>
                             <p>
                         </div>
                     <?php endwhile; ?>
@@ -136,12 +136,12 @@ $gallery = new WP_Query([
         <?php wp_reset_postdata(); ?>
     </div>
 
-    <!-- Client Area
+    <!-- Photo Area
     ================================================== -->
     <div class="span6">
 
         <h5 class="title-bg">
-            <?= titleGenerator(get_option('quotes_title')); ?>
+            <? if (get_cat_name(10)) echo get_cat_name(10) ?>
             <button id="btn-client-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
             <button id="btn-client-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
         </h5>
@@ -149,7 +149,8 @@ $gallery = new WP_Query([
         <!-- Client Testimonial Slider-->
         <?php
         $quotes = new WP_Query([
-            'post_type' => 'quote',
+            'post_type' => 'post',
+            'cat' => 10,
             'post_count' => 6
         ]);
         ?>
@@ -167,18 +168,18 @@ $gallery = new WP_Query([
                             <p class="quote-text"><?= get_the_content() ?><cite><?= get_the_excerpt() ?></cite></p>
                         </div>
 
-                        <div class="item">
-                            <p class="quote-text">"Adipiscing elit. In interdum felis fermentum ipsum molestie sed
-                                porttitor
-                                ligula rutrum. Morbi blandit ultricies ultrices. Vivamus nec lectus sed orci molestie
-                                molestie."<cite>- Another Client Name, Company Name</cite></p>
-                        </div>
-
-                        <div class="item">
-                            <p class="quote-text">"Mauris eget tellus sem. Cras sollicitudin sem eu elit aliquam quis
-                                condimentum nulla suscipit. Nam sed magna ante. Ut eget suscipit mauris."<cite>- On More
-                                    Client, The Company</cite></p>
-                        </div>
+<!--                        <div class="item">-->
+<!--                            <p class="quote-text">"Adipiscing elit. In interdum felis fermentum ipsum molestie sed-->
+<!--                                porttitor-->
+<!--                                ligula rutrum. Morbi blandit ultricies ultrices. Vivamus nec lectus sed orci molestie-->
+<!--                                molestie."<cite>- Another Client Name, Company Name</cite></p>-->
+<!--                        </div>-->
+<!---->
+<!--                        <div class="item">-->
+<!--                            <p class="quote-text">"Mauris eget tellus sem. Cras sollicitudin sem eu elit aliquam quis-->
+<!--                                condimentum nulla suscipit. Nam sed magna ante. Ut eget suscipit mauris."<cite>- On More-->
+<!--                                    Client, The Company</cite></p>-->
+<!--                        </div>-->
 
 
                     <?php endwhile; ?>
@@ -187,17 +188,17 @@ $gallery = new WP_Query([
             </div>
 
         <?php else: ?>
-            <p>Цитат пока нет</p>
+            <p>Записей пока нет</p>
         <?php endif; ?>
         <!-- Возвращаем оригинальные данные поста. Сбрасываем $post. -->
         <?php wp_reset_postdata(); ?>
 
 
-        <!-- Client Logo Thumbs-->
+        <!-- Photo Thumbs-->
         <?php
-        if (!dynamic_sidebar('clients')) {
+        if (!dynamic_sidebar('photos')) {
             echo '<ul class="client-logos">';
-            echo '<li>Клиенты компании</li>';
+            echo '<li>Фотографии</li>';
             echo '</ul>';
         }
         ?>

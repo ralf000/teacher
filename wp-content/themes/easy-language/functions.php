@@ -13,7 +13,8 @@ register_nav_menus([
  */
 function loadStyleScript()
 {
-    wp_enqueue_style('google-font-css', 'http://fonts.googleapis.com/css?family=Oswald');
+//    wp_enqueue_style('google-font-css', 'http://fonts.googleapis.com/css?family=Oswald');
+    wp_enqueue_style('google-font-css', '//fonts.googleapis.com/css?family=Roboto');
     wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.css');
     wp_enqueue_style('bootstrap-responsive-css', get_template_directory_uri() . '/css/bootstrap-responsive.css');
     wp_enqueue_style('prettyPhoto-css', get_template_directory_uri() . '/css/prettyPhoto.css');
@@ -94,24 +95,24 @@ function add_logo_text_in_opts()
     );
 }
 
-function add_quotes_title_in_opts()
-{
-    add_settings_field(
-        'quotes_title', // $id - Название опции (идентификатор)
-        'Заголовок для цитат на главной', // $title - Заголовок поля
-        'display_quotes_title_in_opts', // $callback - callback function
-        'general' // $page - Страница меню в которую будет добавлено поле
-    );
-    register_setting(
-        'general', // $option_group - Название группы, к которой будет принадлежать опция.
-        // Это название должно совпадать с названием группы в функции settings_fields()
-        'quotes_title' // $option_name - Название опции, которая будет сохраняться в БД
-    );
-}
+//function add_quotes_title_in_opts()
+//{
+//    add_settings_field(
+//        'quotes_title', // $id - Название опции (идентификатор)
+//        'Заголовок для цитат на главной', // $title - Заголовок поля
+//        'display_quotes_title_in_opts', // $callback - callback function
+//        'general' // $page - Страница меню в которую будет добавлено поле
+//    );
+//    register_setting(
+//        'general', // $option_group - Название группы, к которой будет принадлежать опция.
+//        // Это название должно совпадать с названием группы в функции settings_fields()
+//        'quotes_title' // $option_name - Название опции, которая будет сохраняться в БД
+//    );
+//}
 
 add_action('admin_init', 'add_phone_in_opts');
 add_action('admin_init', 'add_logo_text_in_opts');
-add_action('admin_init', 'add_quotes_title_in_opts');
+//add_action('admin_init', 'add_quotes_title_in_opts');
 
 function display_phone_in_opts()
 {
@@ -151,7 +152,7 @@ function getMainMenu()
         'container' => '',
         'menu_class' => 'nav',
         'echo' => false,
-        'fallback_cb' => 'wp_page_menu',
+//        'fallback_cb' => 'wp_page_menu',
         'depth' => 0,
 //        'walker' => new My_Walker_Nav_Menu(),
     ]);
@@ -163,6 +164,37 @@ function getMainMenu()
     $replacements = [
         'dropdown-menu',
         '$1<a $2 class="dropdown-toggle" data-toggle="dropdown1">$3 <b class="caret"></b></a>',
+    ];
+    $menu = preg_replace($search, $replacements, $menu);
+    return $menu;
+}
+
+function getMobileMainMenu()
+{
+    $menu = wp_nav_menu([
+        'theme_location' => '',
+        'menu' => '',
+        'container' => '',
+        'container_class' => '',
+        'container_id' => '',
+        'menu_class' => '',
+        'menu_id' => '',
+        'echo' => false,
+        'before' => '',
+        'after' => '',
+        'link_before' => '',
+        'link_after' => '',
+        'items_wrap' => '<select onchange="window.open(this.options[this.selectedIndex].value,\'_top\')">%3$s</select>',
+        'depth' => 0,
+        'walker' => '',
+    ]);
+    $search = [
+        '~<li(.*)>.*<a.*href="(.*)".*>(.*)</a>(</li>)?~Uuim',
+        '~</option></li>~Uuim'
+    ];
+    $replacements = [
+        '<option value="$2">$3</option>',
+        '</option>'
     ];
     $menu = preg_replace($search, $replacements, $menu);
     return $menu;
@@ -212,41 +244,41 @@ add_action('init', 'slider_post');
 /*
  * Добавляем новый тип записей цитаты
  */
-function quote_post()
-{
-    $labels = array(
-        'name' => 'Цитаты', // Основное название типа записи
-        'singular_name' => 'Цитата', // отдельное название записи типа Book
-        'add_new' => 'Добавить новую',
-        'add_new_item' => 'Добавить новую Цитату',
-        'edit_item' => 'Редактировать Цитату',
-        'new_item' => 'Новая Цитата',
-        'view_item' => 'Посмотреть Цитату',
-        'search_items' => 'Найти Цитату',
-        'not_found' => 'Цитат не найдено',
-        'not_found_in_trash' => 'В корзине Цитат не найдено',
-        'parent_item_colon' => '',
-        'menu_name' => 'Цитаты'
-    );
-    $args = array(
-        'labels' => $labels,
-        'public' => true,
-        'publicly_queryable' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'query_var' => true,
-        'rewrite' => true,
-        'capability_type' => 'post',
-        'has_archive' => true,
-        'hierarchical' => false,
-        'menu_position' => null,
-        'supports' => ['title', 'excerpt', 'editor']
-    );
-    register_post_type('quote', $args);
-}
+//function quote_post()
+//{
+//    $labels = array(
+//        'name' => 'Цитаты', // Основное название типа записи
+//        'singular_name' => 'Цитата', // отдельное название записи типа Book
+//        'add_new' => 'Добавить новую',
+//        'add_new_item' => 'Добавить новую Цитату',
+//        'edit_item' => 'Редактировать Цитату',
+//        'new_item' => 'Новая Цитата',
+//        'view_item' => 'Посмотреть Цитату',
+//        'search_items' => 'Найти Цитату',
+//        'not_found' => 'Цитат не найдено',
+//        'not_found_in_trash' => 'В корзине Цитат не найдено',
+//        'parent_item_colon' => '',
+//        'menu_name' => 'Цитаты'
+//    );
+//    $args = array(
+//        'labels' => $labels,
+//        'public' => true,
+//        'publicly_queryable' => true,
+//        'show_ui' => true,
+//        'show_in_menu' => true,
+//        'query_var' => true,
+//        'rewrite' => true,
+//        'capability_type' => 'post',
+//        'has_archive' => true,
+//        'hierarchical' => false,
+//        'menu_position' => null,
+//        'supports' => ['title', 'excerpt', 'editor']
+//    );
+//    register_post_type('quote', $args);
+//}
 
 //добавляем функцию в экшн init
-add_action('init', 'quote_post');
+//add_action('init', 'quote_post');
 
 function titleGenerator(string $string)
 {
@@ -256,8 +288,8 @@ function titleGenerator(string $string)
 
 //область для виджетов
 $opts = [
-    'name' => 'Клиенты компании',//название области для админки
-    'id' => 'clients',
+    'name' => 'Фотографии внизу',//название области для админки
+    'id' => 'photos',
     'before_widget' => '<div class="clients-widget" id="%1$s">',
     'after_widget' => '</div>',
     'before_title' => '<h3>',
@@ -341,13 +373,14 @@ function getTags(string $tags) : string
 /**
  * пагинация
  */
-function sitePagination() {
+function sitePagination()
+{
     global $wp_query, $wp_rewrite;
-    $output       = $pages        = '';
-    $max          = $wp_query->max_num_pages;
-    if (!$current      = get_query_var('paged'))//если текущая страница = 0 (если мы на первой странице)
-        $current      = 1;
-    $total          = 0; //1 - выводить текст "Страница N из N", 0 - не выводить
+    $output = $pages = '';
+    $max = $wp_query->max_num_pages;
+    if (!$current = get_query_var('paged'))//если текущая страница = 0 (если мы на первой странице)
+        $current = 1;
+    $total = 0; //1 - выводить текст "Страница N из N", 0 - не выводить
     $opts = array(
         'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
         'total' => $max,
@@ -395,13 +428,14 @@ function reorder_comment_fields($fields)
  * Вовзращает массив меток
  * @return array массив меток
  */
-function getTagsInArray($id = NULL) {
-    $arr    = ($id !== NULL) ? wp_get_post_tags($id) : get_the_tags();
+function getTagsInArray($id = NULL)
+{
+    $arr = ($id !== NULL) ? wp_get_post_tags($id) : get_the_tags();
     $output = [];
     if (empty($arr))
         return NULL;
     foreach ($arr as $tag) {
-        $id                 = $tag->term_id;
+        $id = $tag->term_id;
         $output[$tag->name] = get_tag_link($id);
     }
     return $output;
@@ -410,9 +444,10 @@ function getTagsInArray($id = NULL) {
 /*
   * возвращает список меток всех постов в категории
   */
-function getAllTagsFromCategory($catID) {
+function getAllTagsFromCategory($catID)
+{
     $posts = get_posts([
-        'category'    => $catID,
+        'category' => $catID,
         'numberposts' => -1
     ]);
     $tags = [];
@@ -431,11 +466,12 @@ function getAllTagsFromCategory($catID) {
  * Использовать в цикле
  * @return null|string
  */
-function getTagsAsString(){
+function getTagsAsString()
+{
     $tags = get_the_tags();
     $output = '';
     if (!$tags) return null;
-    foreach ($tags as $tag){
+    foreach ($tags as $tag) {
         $output .= ($tag->name) . ' ';
     }
     return trim($output);
@@ -451,10 +487,13 @@ function checkCustomField(string $name) : bool
     return isset(get_post_custom()[$name]) && get_post_custom()[$name][0];
 }
 
-function segment_length ($length) {
+function segment_length($length)
+{
     return 100;
 }
-function segment_more($more) {
+
+function segment_more($more)
+{
     return '...';
 }
 
@@ -464,14 +503,42 @@ function segment_more($more) {
  * @param string $more_callback
  * @return mixed|string|void
  */
-function getExcerptByMore($length_callback='segment_length', $more_callback='segment_more') {
+function getExcerptByMore($length_callback = 'segment_length', $more_callback = 'segment_more')
+{
     global $post;
     add_filter('excerpt_length', $length_callback);
     add_filter('excerpt_more', $more_callback);
     $output = get_the_excerpt();
     $output = apply_filters('wptexturize', $output);
     $output = apply_filters('convert_chars', $output);
-    $output = ''.$output.'';
+    $output = '' . $output . '';
     return $output;
+}
+
+/**
+ * @param integer $number
+ * @param string $commentsName
+ * @return string
+ */
+function getCommentsWithEnding($number, $commentsName = 'комментари')
+{
+    $number = intval($number);
+    if ($number % 100 > 10 && $number % 100 < 20)
+        return $number . ' '. $commentsName . 'ев';
+    switch ($result = $number % 10) {
+        case $result === 0 && $result > 4:
+            $end = 'ев';
+            break;
+        case $result === 1:
+            $end = 'й';
+            break;
+        case $result > 1 && $result < 5:
+            $end = 'я';
+            break;
+        default:
+            $end = 'ев';
+    }
+    var_dump($result);
+    return $number . ' '. $commentsName . $end;
 }
 

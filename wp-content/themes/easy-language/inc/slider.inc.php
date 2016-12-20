@@ -9,7 +9,15 @@
         <div class="flexslider">
             <ul class="slides">
                 <?php while ($slider->have_posts()): $slider->the_post() ?>
-                    <li><a target="_blank" href="<?= post_custom('slide_link'); ?>"><?php the_post_thumbnail('full') ?></a></li>
+                    <li>
+                        <?php if (post_custom('slide_link')): ?>
+                        <a target="_blank" href="<?= post_custom('slide_link'); ?>">
+                            <?php endif; ?>
+                            <?php the_post_thumbnail('full') ?>
+                            <?php if (post_custom('slide_link')): ?>
+                        </a>
+                    <?php endif; ?>
+                    </li>
                 <?php endwhile; ?>
             </ul>
         </div>

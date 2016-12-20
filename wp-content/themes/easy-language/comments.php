@@ -36,7 +36,7 @@ $GLOBALS['comment'] = $comment; ?>
     ?>
 
 <section class="comments">
-    <h4 class="title-bg"><a name="comments"></a><?= get_comments_number() ?> Comments so far</h4>
+    <h4 class="title-bg"><a name="comments"></a><?= getCommentsWithEnding(get_comments_number())?></h4>
     <ul>
         <?php wp_list_comments($args); ?>
     </ul>
