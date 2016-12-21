@@ -538,7 +538,25 @@ function getCommentsWithEnding($number, $commentsName = 'комментари')
         default:
             $end = 'ев';
     }
-    var_dump($result);
     return $number . ' '. $commentsName . $end;
+}
+
+/**
+ * Возвращает изображения для использования в галерее
+ * фильтрует изображения с высотой, превышающей ширину
+ * @param int $num количество выводимых изображений
+ * @return array|null
+ */
+function getPhotosByGallery($num = 10)
+{
+    global $wpdb;
+    $result = $wpdb->get_results("SELECT image_url as img FROM `{$wpdb->base_prefix}huge_itgallery_images` ORDER  BY RAND() LIMIT $num");
+    if (!$result)
+        return null;
+    $result = array_filter($result, function ($el){
+        list($w,$h) = getimagesize($el->img);
+        return $w > $h;
+    });
+    return $result;
 }
 

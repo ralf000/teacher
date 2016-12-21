@@ -1498,6 +1498,10 @@ body > .container{
     background: #d8450b none;
 }
 
+.button-block{
+    display: none !important;
+}
+
 
 /* Mobile Portrait Size to Tablet Portrait Size */
 @media only screen and  (max-width: 767px) {

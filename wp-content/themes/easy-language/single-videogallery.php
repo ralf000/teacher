@@ -1,3 +1,8 @@
+<?php
+/*
+WP Post Template: Шаблон категории "Видеогалерея"
+*/
+?>
 <?php get_header(); ?>
 <!-- Blog Content
   ================================================== -->
@@ -16,7 +21,6 @@
         <article>
             <h3 class="title-bg"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
             <div class="post-content">
-                <?php the_post_thumbnail('full') ?>
 
                 <div class="post-body">
                     <?php the_content() ?>

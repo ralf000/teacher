@@ -101,9 +101,12 @@ $portfolio = new WP_Query([
                         <!--первая запись блока помечается классом active-->
                         <div class="<?php if (!isset($flag)) echo 'active';
                         $flag = true; ?> item">
-                            <a href="<?php the_permalink() ?>">
-                                <img src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title() ?>"
-                                     class="align-left blog-thumb-preview"/></a>
+                            <?php if (get_the_post_thumbnail_url()): ?>
+                                <a href="<?php the_permalink() ?>">
+                                    <img src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title() ?>"
+                                         class="align-left blog-thumb-preview"/>
+                                </a>
+                            <?php endif; ?>
                             <div class="post-info clearfix">
                                 <h4><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
                                 <ul class="blog-details-preview">
@@ -140,46 +143,76 @@ $portfolio = new WP_Query([
     ================================================== -->
     <div class="span6">
 
-        <h5 class="title-bg">
-            <? if (get_cat_name(10)) echo get_cat_name(10) ?>
-            <button id="btn-client-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
-            <button id="btn-client-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
-        </h5>
-
-        <!-- Client Testimonial Slider-->
         <?php
-        $quotes = new WP_Query([
+        $photos = new WP_Query([
             'post_type' => 'post',
-            'cat' => 10,
+            'cat' => [12],
+            'post_count' => 10,
+            'orderby' => 'rand'
+        ]);
+        ?>
+        <?php if ($photos->have_posts()): ?>
+            <h5 class="title-bg">
+                <? if (get_cat_name(10)) echo get_cat_name(10) ?>
+                <button id="btn-client-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
+                <button id="btn-client-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
+            </h5>
+
+
+            <div id="clientCarousel" class="carousel slide no-margin" data-ride="carousel" data-interval="2000" data-pause="false">
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+
+                    <?php while ($photos->have_posts()): $photos->the_post() ?>
+                        <?php if (!get_the_post_thumbnail_url()) continue; ?>
+                        <!--первая запись блока помечается классом active-->
+                        <div class="<?php if (!isset($flag3)) echo 'active';
+                        $flag3 = true; ?> item">
+                            <a href="<?php the_permalink() ?>">
+                                <img src="<?php the_post_thumbnail_url('full') ?>" alt="<?php the_title() ?>" width="100%" height="200px" class="align-left blog-thumb-preview"/>
+                            </a>
+                        </div>
+
+                    <?php endwhile; ?>
+
+                </div>
+            </div>
+
+        <?php else: ?>
+            <p>Записей пока нет</p>
+        <?php endif; ?>
+        <!-- Возвращаем оригинальные данные поста. Сбрасываем $post. -->
+        <?php wp_reset_postdata(); ?>
+
+
+        <?php
+        $publications = new WP_Query([
+            'post_type' => 'post',
+            'cat' => 1,
             'post_count' => 6
         ]);
         ?>
-        <?php if ($quotes->have_posts()): ?>
+        <? if ($publications->have_posts()): ?>
+        <h5 class="title-bg">
+            <? if (get_cat_name(1)) echo get_cat_name(1) ?>
+            <button id="btn-blog-next" class="btn btn-inverse btn-mini" type="button">&raquo;</button>
+            <button id="btn-blog-prev" class="btn btn-inverse btn-mini" type="button">&laquo;</button>
+        </h5>
 
             <div id="clientCarousel" class="carousel slide no-margin">
                 <!-- Carousel items -->
                 <div class="carousel-inner">
 
-                    <?php while ($quotes->have_posts()): $quotes->the_post() ?>
+                    <?php while ($publications->have_posts()): $publications->the_post() ?>
 
 
-                        <div class="<?php if (!isset($flag2)) echo 'active';
-                        $flag2 = true; ?> item">
-                            <p class="quote-text"><?= get_the_content() ?><cite><?= get_the_excerpt() ?></cite></p>
+                        <div class="<?php if (!isset($flag4)) echo 'active';
+                        $flag4 = true; ?> item">
+                            <p class="quote-text">
+                                <a href="<?php the_permalink() ?>"><?= get_the_title() ?></a>
+                                <cite><?= get_the_excerpt() ?></cite>
+                            </p>
                         </div>
-
-<!--                        <div class="item">-->
-<!--                            <p class="quote-text">"Adipiscing elit. In interdum felis fermentum ipsum molestie sed-->
-<!--                                porttitor-->
-<!--                                ligula rutrum. Morbi blandit ultricies ultrices. Vivamus nec lectus sed orci molestie-->
-<!--                                molestie."<cite>- Another Client Name, Company Name</cite></p>-->
-<!--                        </div>-->
-<!---->
-<!--                        <div class="item">-->
-<!--                            <p class="quote-text">"Mauris eget tellus sem. Cras sollicitudin sem eu elit aliquam quis-->
-<!--                                condimentum nulla suscipit. Nam sed magna ante. Ut eget suscipit mauris."<cite>- On More-->
-<!--                                    Client, The Company</cite></p>-->
-<!--                        </div>-->
 
 
                     <?php endwhile; ?>
@@ -200,6 +233,7 @@ $portfolio = new WP_Query([
             echo '<ul class="client-logos">';
             echo '<li>Фотографии</li>';
             echo '</ul>';
+            getPhotosByGallery();
         }
         ?>
 

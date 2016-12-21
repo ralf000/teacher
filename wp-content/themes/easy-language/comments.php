@@ -65,7 +65,7 @@ $GLOBALS['comment'] = $comment; ?>
         'comment_field' => '<textarea class="span6" name="comment"></textarea>',
         'id_form' => 'comment-form',
         'class_submit' => 'btn btn-inverse',
-        'label_submit' => 'Post My Comment',
+        'label_submit' => 'Добавить комментарий',
         'submit_field' => '<div class="row"><div class="span2">%1$s %2$s</div></div>',
     ];
 
