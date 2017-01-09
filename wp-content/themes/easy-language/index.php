@@ -21,8 +21,8 @@
 <?php
 $portfolio = new WP_Query([
     'post_type' => 'post',
-    'cat' => [6,7,9],
-    'posts_per_page' => 8
+    'cat' => [6, 7, 9],
+    'posts_per_page' => 4
 ]);
 ?>
 <? if ($portfolio->have_posts()): ?>
@@ -31,9 +31,9 @@ $portfolio = new WP_Query([
         <div class="span12">
             <h5 class="title-bg">
                 <? if (get_cat_name(5)) echo get_cat_name(5) ?>
-                <!--<button onclick="location.href='<?//= get_category_link(5); ?>'"
+                <!--<button onclick="location.href='<? //= get_category_link(5); ?>'"
                         class="btn btn-mini btn-inverse hidden-phone"
-                        type="button"><?//= get_the_category_by_ID(5) ?>
+                        type="button"><? //= get_the_category_by_ID(5) ?>
                 </button>-->
             </h5>
 
@@ -44,7 +44,9 @@ $portfolio = new WP_Query([
 
                     <!-- Gallery Item 1 -->
                     <?php while ($portfolio->have_posts()) : $portfolio->the_post(); ?>
+                        <?php if (!get_the_post_thumbnail_url()) continue; ?>
                         <li class="span3 gallery-item" data-id="id-<? the_ID() ?>" data-type="illustration">
+                            <h6><?= get_the_category(get_the_ID())[0]->name ?></h6>
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
                                 <a href="<?php the_post_thumbnail_url('full') ?>" class="item-zoom-link lightbox"
@@ -82,7 +84,7 @@ $portfolio = new WP_Query([
         <?php
         $publications = new WP_Query([
             'post_type' => 'post',
-            'cat' => 1,
+            'cat' => [2, 3, 15],
             'post_count' => 6
         ]);
         ?>
@@ -170,7 +172,7 @@ $portfolio = new WP_Query([
                                 <?php the_content() ?>
                             </div>
                             <div class="post-info clearfix">
-                            <h4><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
+                                <h4><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
                                 <ul class="blog-details-preview">
                                     <li><i class="icon-calendar"></i><strong>Posted
                                             on:</strong> <?php the_time('M j, Y') ?>

@@ -14,7 +14,7 @@
 
         <!-- Article Post -->
         <article>
-            <h3 class="title-bg"><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
+            <h3 class="title-bg"><?php the_title() ?></h3>
             <div class="post-content">
                 <?php the_post_thumbnail('full') ?>
 

@@ -49,10 +49,8 @@ set_post_thumbnail_size(180, 180);
 
 function getIndexPageText($excerpt)
 {
-    $list = explode('.', $excerpt, 3);
-    return (count($list) < 3)
-        ? implode(' ', $list)
-        : '<p class="lead">' . implode('. ', array_slice($list, 0, 2)) . '.</p><p>' . substr($list[2], 0, 400) . '...</p>';
+    list($pre) = explode('<!--more-->', $excerpt, 3);
+    return $pre ? strip_tags($pre) : $excerpt;
 }
 
 /**
@@ -290,7 +288,7 @@ function titleGenerator(string $string)
 $opts = [
     'name' => 'Виджеты внизу',//название области для админки
     'id' => 'photos',
-    'before_widget' => '<div class="clients-widget" id="%1$s">',
+    'before_widget' => '<div class="presentations" id="%1$s">',
     'after_widget' => '</div>',
     'before_title' => '<h5>',
     'after_title' => '</h5>'
@@ -524,7 +522,7 @@ function getCommentsWithEnding($number, $commentsName = 'комментари')
 {
     $number = intval($number);
     if ($number % 100 > 10 && $number % 100 < 20)
-        return $number . ' '. $commentsName . 'ев';
+        return $number . ' ' . $commentsName . 'ев';
     switch ($result = $number % 10) {
         case $result === 0 && $result > 4:
             $end = 'ев';
@@ -538,7 +536,7 @@ function getCommentsWithEnding($number, $commentsName = 'комментари')
         default:
             $end = 'ев';
     }
-    return $number . ' '. $commentsName . $end;
+    return $number . ' ' . $commentsName . $end;
 }
 
 /**
@@ -553,9 +551,27 @@ function getPhotosByGallery($num = 10)
     $result = $wpdb->get_results("SELECT image_url as img FROM `{$wpdb->base_prefix}huge_itgallery_images` ORDER  BY RAND() LIMIT $num");
     if (!$result)
         return null;
-    $result = array_filter($result, function ($el){
-        list($w,$h) = getimagesize($el->img);
+    $result = array_filter($result, function ($el) {
+        list($w, $h) = getimagesize($el->img);
         return $w > $h;
     });
     return $result;
+}
+
+function getSubcategoriesByCurrentCategory(){
+    $subs = get_categories(['parent' => get_the_category()[0]->category_parent]);
+    $output = [];
+    foreach ($subs as $sub) {
+        $output[get_category_link($sub->term_id)] = $sub->name;
+    }
+    return $output;
+}
+
+function getSubcategoriesIds(){
+    $subs = get_categories(['parent' => get_the_category()[0]->category_parent]);
+    $output = [];
+    foreach ($subs as $sub) {
+        $output[] = $sub->term_id;
+    }
+    return $output;
 }

@@ -34,9 +34,9 @@ Template Name: Шаблон страницы "О сайте"
 
 <script>
     //оборачиваем текст до тега more
-    $(function () {
-        $('.row p > span').parent('p').addClass('lead');
-    });
+//    $(function () {
+//        $('.row p > span').parent('p').addClass('lead');
+//    });
 </script>
 
 <?php get_footer(); ?>

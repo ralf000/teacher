@@ -1,0 +1,2 @@
+Option to select how videos are sorted (by views) https://wordpress.org/support/topic/sort-by-views-1?replies=2
+Display number of views below video https://wordpress.org/support/topic/show-views?replies=1
