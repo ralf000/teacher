@@ -82,7 +82,7 @@ $portfolio = new WP_Query([
         <?php
         $publications = new WP_Query([
             'post_type' => 'post',
-            'cat' => 1,
+            'cat' => [2,3,15],
             'post_count' => 6
         ]);
         ?>

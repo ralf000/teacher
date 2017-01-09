@@ -991,34 +991,39 @@ ul.post-data li:last-child {
 }
 
 .sidebar ul.post-category-list,
+.sidebar ul.wpp-list,
 .sidebar .tab-content .tab-pane ul {
     margin: 0px;
 }
 
-.sidebar ul.post-category-list li,
+.sidebar .post-category-list li,
+.sidebar ul.wpp-list li,
 .sidebar .tab-content .tab-pane ul li {
     list-style: none;
     border-bottom: 1px dashed #a9a9a9;
     padding: 10px 5px;
 }
 
-.sidebar ul.post-category-list li a {
+.sidebar .post-category-list li a, .sidebar ul.wpp-list li a {
     font-family: 'Roboto', sans-serif;
     font-weight: normal;
     text-transform: uppercase;
 }
 
-.sidebar ul.post-category-list li:first-child,
+.sidebar .post-category-list li:first-child,
+.sidebar .wpp-list li:first-child,
 .sidebar .tab-content .tab-pane ul li:first-child {
     padding-top: 0px;
 }
 
-.sidebar ul.post-category-list li:last-child {
+.sidebar .post-category-list li:last-child,
+.sidebar .wpp-list li:last-child{
     padding-bottom: 0px;
     border-bottom: none;
 }
 
-.sidebar ul.post-category-list li i {
+.sidebar ul.post-category-list li i,
+.sidebar ul.wpp-list li i{
     padding-right: 5px;
     background-position: 0 -95px;
 }
@@ -1031,7 +1036,7 @@ ul.post-data li:last-child {
     margin: 0px;
 }
 
-.popular-posts li, .sidebar div[id|="category-posts"] li {
+.popular-posts li, .sidebar div[id|="category-posts"] li, .presentations[id|="category-posts"] li{
     list-style: none;
     margin-bottom: 20px;
     clear: both;
@@ -1042,7 +1047,9 @@ ul.post-data li:last-child {
 .popular-posts li a,
 .popular-posts li a:hover,
 .sidebar div[id|="category-posts"] li a,
-.sidebar div[id|="category-posts"] li a:hover {
+.sidebar div[id|="category-posts"] li a:hover,
+.presentations[id|="category-posts"] li a,
+.presentations[id|="category-posts"] li a:hover {
     color: #333333;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
@@ -1051,17 +1058,14 @@ ul.post-data li:last-child {
 }
 
 .popular-posts li img,
-.sidebar div[id|="category-posts"] li img {
+.sidebar div[id|="category-posts"] li img,
+.presentations[id|="category-posts"] li img{
     float: left;
     margin-right: 20px;
 }
 
-.sidebar div[id|="category-posts"] p.post-date {
+.sidebar div[id|="category-posts"] p.post-date, .presentations[id|="category-posts"] p.post-date {
     font-style: italic
-}
-
-.popular-posts li em, .sidebar div[id|="category-posts"] p.post-date {
-    font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 p.side {

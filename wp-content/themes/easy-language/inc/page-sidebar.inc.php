@@ -1,7 +1,17 @@
 <div class="span4 sidebar page-sidebar"><!-- Begin sidebar column -->
 
+    <!--Search-->
+    <section>
+        <div class="input-append">
+            <form action="<?php bloginfo('url'); ?>">
+                <input id="appendedInputButton" size="16" name="s" type="text" placeholder="Поиск">
+                <button class="btn" type="submit"><i class="icon-search"></i></button>
+            </form>
+        </div>
+    </section>
+
     <!--Tabbed Content-->
-    <h5 class="title-bg">More Info</h5>
+    <h5 class="title-bg">Информация</h5>
     <ul class="nav nav-tabs"></ul>
 
     <div class="tab-content">
@@ -19,20 +29,6 @@
         'orderby' => 'rand'
     ]);
     ?>
-    <?php if ($quotes->have_posts()): ?>
-        <h5 class="title-bg">Testimonials</h5>
-        <?php while ($quotes->have_posts()): $quotes->the_post() ?>
-
-            <p class="quote-text side">
-            <?= get_the_content() ?>
-                <cite><?= get_the_excerpt() ?></cite></p>
-
-        <?php endwhile; ?>
-    <?php else: ?>
-        <p>Цитат пока нет</p>
-    <?php endif; ?>
-    <!-- Возвращаем оригинальные данные поста. Сбрасываем $post. -->
-    <?php wp_reset_postdata(); ?>
 
     <?php
     if (!dynamic_sidebar('page_sidebar'))

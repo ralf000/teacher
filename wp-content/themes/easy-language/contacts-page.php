@@ -26,7 +26,8 @@ Template Name: Шаблон страницы контактов
 
         <!-- Sidebar
         ================================================== -->
-        <?php require_once "inc/contacts-sidebar.inc.php" ?>
+<!--        --><?php //require_once "inc/contacts-sidebar.inc.php" ?>
+        <?php require_once "inc/page-sidebar.inc.php" ?>
 
     </div><!-- End container row -->
 
