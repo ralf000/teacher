@@ -8,37 +8,46 @@ Author: Evgeny
 .alignnone {
     margin: 5px 20px 20px 0;
 }
+
 .aligncenter, div.aligncenter {
     margin: auto;
 }
+
 .alignright {
-    float:right;
+    float: right;
     margin: 5px 0 20px 20px;
 }
+
 .alignleft {
-    float:left;
+    float: left;
     margin: 5px 20px 20px 0;
 }
+
 .aligncenter {
     display: block;
     margin: 5px auto 5px auto;
 }
+
 a img.alignright {
-    float:right;
+    float: right;
     margin: 5px 0 20px 20px;
 }
+
 a img.alignnone {
     margin: 5px 20px 20px 0;
 }
+
 a img.alignleft {
-    float:left;
+    float: left;
     margin: 5px 20px 20px 0;
 }
+
 a img.aligncenter {
     display: block;
     margin-left: auto;
     margin-right: auto
 }
+
 .wp-caption {
     background: #fff;
     border: 1px solid #f0f0f0;
@@ -46,28 +55,33 @@ a img.aligncenter {
     padding: 5px 3px 10px;
     text-align: center;
 }
+
 .wp-caption.alignnone {
     margin: 5px 20px 20px 0;
 }
+
 .wp-caption.alignleft {
     margin: 5px 20px 20px 0;
 }
+
 .wp-caption.alignright {
     margin: 5px 0 20px 20px;
 }
+
 .wp-caption img {
     border: 0 none;
     height: auto;
-    margin:0;
+    margin: 0;
     max-width: 98.5%;
-    padding:0;
+    padding: 0;
     width: auto;
 }
+
 .wp-caption p.wp-caption-text {
-    font-size:11px;
-    line-height:17px;
-    margin:0;
-    padding:0 4px 5px;
+    font-size: 11px;
+    line-height: 17px;
+    margin: 0;
+    padding: 0 4px 5px;
 }
 
 /*/Standart WP Styles*/
@@ -370,7 +384,7 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 
     .gallery-hover-4col {
         width: 270px;
-        height: 220px;
+        height: 180px;
     }
 
     .gallery-hover-3col {
@@ -443,6 +457,16 @@ ul.nav li.dropdown:hover ul.dropdown-menu {
 }
 
 /* Portrait tablet to landscape */
+@media all and (max-width: 1199px) {
+    li.span3 .project-details a {
+        white-space: normal;
+    }
+
+    li.span3 .project-details .excerpt {
+        display: none;
+    }
+}
+
 @media (min-width: 768px) and (max-width: 979px) {
 
     /* Clip descriptions */
@@ -1018,7 +1042,7 @@ ul.post-data li:last-child {
 .popular-posts li a,
 .popular-posts li a:hover,
 .sidebar div[id|="category-posts"] li a,
-.sidebar div[id|="category-posts"] li a:hover{
+.sidebar div[id|="category-posts"] li a:hover {
     color: #333333;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
@@ -1027,12 +1051,16 @@ ul.post-data li:last-child {
 }
 
 .popular-posts li img,
-.sidebar div[id|="category-posts"] li img{
+.sidebar div[id|="category-posts"] li img {
     float: left;
     margin-right: 20px;
 }
-.sidebar div[id|="category-posts"] p.post-date{font-style: italic}
-.popular-posts li em, .sidebar div[id|="category-posts"] p.post-date  {
+
+.sidebar div[id|="category-posts"] p.post-date {
+    font-style: italic
+}
+
+.popular-posts li em, .sidebar div[id|="category-posts"] p.post-date {
     font-family: Georgia, "Times New Roman", Times, serif;
 }
 
@@ -1261,7 +1289,7 @@ a.accordion-toggle {
     margin: 0px 20px 20px 0px;
 }
 
-#blogCarousel .align-left{
+#blogCarousel .align-left {
     max-width: 60%;
 }
 
@@ -1291,7 +1319,7 @@ a.accordion-toggle {
     height: 3px;
 }
 
-.color-bar-3{
+.color-bar-3 {
     background: yellow;
 }
 
@@ -1435,7 +1463,7 @@ a.accordion-toggle {
 }
 
 /*==========MY======================*/
-#background{
+#background {
     background: url(http://img2.goodfon.su/original/1920x1200/a/ae/germaniya-rothenburg-ulica-2244.jpg) no-repeat;
     position: fixed;
     width: 100%;
@@ -1444,8 +1472,8 @@ a.accordion-toggle {
     z-index: -999;
 }
 
-body > .container{
-    background-color: rgba(255,255,255,0.8);
+body > .container {
+    background-color: rgba(255, 255, 255, 0.8);
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -1455,8 +1483,7 @@ body > .container{
     overflow: hidden;
 }
 
-
-.footer-container .menu ul{
+.footer-container .menu ul {
     float: right;
 }
 
@@ -1465,43 +1492,55 @@ body > .container{
     padding-right: 5px;
     padding-bottom: 0;
 }
-.footer-container ul.footer_menu li a{
+
+.footer-container ul.footer_menu li a {
     border-right: 1px solid white;
     padding-right: 10px;
 }
 
-.footer-container ul.footer_menu li:last-child a{
+.footer-container ul.footer_menu li:last-child a {
     border: none;
 }
 
-.sidebar div[id|="category-posts"]{
+.sidebar div[id|="category-posts"] {
     list-style: none;
 }
 
-.sidebar div[id|="category-posts"] .post-date:before{
+.sidebar div[id|="category-posts"] .post-date:before {
     content: 'Posted on '
 }
 
-.sidebar div[id|="category-posts"] ul{
+.sidebar div[id|="category-posts"] ul {
     margin: 0;
 }
 
-.tab-pane .widgettitle{
+.tab-pane .widgettitle {
     display: none;
 }
 
-.dropdown-menu .active{
+.dropdown-menu .active {
     padding-bottom: 1px;
 }
 
-.dropdown-menu .active > a, .dropdown-menu .active > a:hover, .dropdown-menu .active{
+.dropdown-menu .active > a, .dropdown-menu .active > a:hover, .dropdown-menu .active {
     background: #d8450b none;
 }
 
-.button-block{
+.button-block {
     display: none !important;
 }
 
+.flex-caption {
+    width: 96%;
+    padding: 2%;
+    left: 0;
+    bottom: 0;
+    background: #363636;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+    font-size: 14px;
+    line-height: 18px;
+}
 
 /* Mobile Portrait Size to Tablet Portrait Size */
 @media only screen and  (max-width: 767px) {

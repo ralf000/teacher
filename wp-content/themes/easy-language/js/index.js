@@ -1,5 +1,12 @@
 $(document).ready(function () {
 
+    $("#btn-video-next").click(function () {
+        $('#videoCarousel').carousel('next')
+    });
+    $("#btn-video-prev").click(function () {
+        $('#videoCarousel').carousel('prev')
+    });
+    
     $("#btn-blog-next").click(function () {
         $('#blogCarousel').carousel('next')
     });

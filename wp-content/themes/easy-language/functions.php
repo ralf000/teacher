@@ -163,7 +163,7 @@ function getMainMenu()
     ];
     $replacements = [
         'dropdown-menu',
-        '$1<a $2 class="dropdown-toggle" data-toggle="dropdown1">$3 <b class="caret"></b></a>',
+        '$1<a $2 class="dropdown-toggle" data-toggle="dropdown">$3 <b class="caret"></b></a>',
     ];
     $menu = preg_replace($search, $replacements, $menu);
     return $menu;
@@ -288,12 +288,12 @@ function titleGenerator(string $string)
 
 //область для виджетов
 $opts = [
-    'name' => 'Фотографии внизу',//название области для админки
+    'name' => 'Виджеты внизу',//название области для админки
     'id' => 'photos',
     'before_widget' => '<div class="clients-widget" id="%1$s">',
     'after_widget' => '</div>',
-    'before_title' => '<h3>',
-    'after_title' => '</h3>'
+    'before_title' => '<h5>',
+    'after_title' => '</h5>'
 ];
 register_sidebar($opts);
 
@@ -559,4 +559,3 @@ function getPhotosByGallery($num = 10)
     });
     return $result;
 }
-
