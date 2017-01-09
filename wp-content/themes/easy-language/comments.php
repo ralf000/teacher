@@ -23,7 +23,7 @@ $GLOBALS['comment'] = $comment; ?>
         'callback' => comments_callback,
         'end-callback' => null,
         'type' => 'all',
-        'reply_text' => 'Reply',
+        'reply_text' => 'Ответить',
         'page' => '',
         'per_page' => '',
         'avatar_size' => 45,
@@ -48,19 +48,19 @@ $GLOBALS['comment'] = $comment; ?>
         'fields' => [
             'author' => '<div class="input-prepend">
                             <span class="add-on"><i class="icon-user"></i></span>
-                            <input class="span4" name="author" id="prependedInput" size="16" type="text" placeholder="Name" 
+                            <input class="span4" name="author" id="prependedInput" size="16" type="text" placeholder="Имя" 
                                 value="' . esc_attr($commenter['comment_author']) . '">
                         </div>',
             'email' => '<div class="input-prepend">
                             <span class="add-on"><i class="icon-envelope"></i></span>
-                            <input class="span4" name="email" id="prependedInput" size="16" type="text" placeholder="Email Address"
+                            <input class="span4" name="email" id="prependedInput" size="16" type="text" placeholder="Email"
                                 value="' . esc_attr($commenter['comment_author_email']) . '">
                         </div>',
-            'url' => '<div class="input-prepend">
+            /*'url' => '<div class="input-prepend">
                             <span class="add-on"><i class="icon-globe"></i></span>
                             <input class="span4" name="url" id="prependedInput" size="16" type="text" placeholder="Website URL"
                                 value="' . esc_attr($commenter['comment_author_url']) . '">
-                        </div>'
+                        </div>'*/
         ],
         'comment_field' => '<textarea class="span6" name="comment"></textarea>',
         'id_form' => 'comment-form',
