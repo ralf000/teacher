@@ -28,6 +28,7 @@ $(window).load(function () {
     $('.flexslider').flexslider({
         animation: "slide",
         slideshow: true,
+        smoothHeight: true,
         start: function (slider) {
             $('body').removeClass('loading');
         }
