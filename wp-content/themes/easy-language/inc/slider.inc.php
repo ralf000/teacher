@@ -3,7 +3,8 @@
 <div class="span8">
     <?php $slider = new WP_Query([
         'post_type' => 'slide',
-        'order' => 'asc'
+        'order' => 'desc',
+        'orderby' => 'post_date'
     ]); ?>
     <?php if ($slider->have_posts()): ?>
         <div class="flexslider">
