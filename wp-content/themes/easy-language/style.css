@@ -199,7 +199,7 @@ blockquote.pull-right {
 }
 
 .headline {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
 }
 
 /* Landscape phones and down */
@@ -1555,6 +1555,11 @@ body > .container {
     font-size: 14px;
     line-height: 18px;
     margin: 0;
+}
+
+.flexslider {
+    background: none;
+    min-height: 460px;
 }
 
 /* Mobile Portrait Size to Tablet Portrait Size */

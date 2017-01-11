@@ -114,13 +114,12 @@ $portfolio = new WP_Query([
                             <div class="post-info clearfix">
                                 <h4><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
                                 <ul class="blog-details-preview">
-                                    <li><i class="icon-calendar"></i><strong>Posted
-                                            on:</strong> <?php the_time('M j, Y') ?>
+                                    <li><i class="icon-calendar"></i><strong>Дата:</strong> <?php the_time('M j, Y') ?>
                                     <li>
-                                    <li><i class="icon-user"></i><strong>Posted by:</strong>
+                                    <li><i class="icon-user"></i><strong>Автор:</strong>
                                         <?php the_author() ?>
                                     <li>
-                                    <li><i class="icon-comment"></i><strong>Comments:</strong>
+                                    <li><i class="icon-comment"></i><strong>Комментарии:</strong>
                                         <a href="<?php comment_link() ?>" title="Link"><?php comments_number() ?></a>
                                     <li>
                                         <?php if (get_the_tag_list()): ?>
@@ -174,13 +173,12 @@ $portfolio = new WP_Query([
                             <div class="post-info clearfix">
                             <h4><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h4>
                                 <ul class="blog-details-preview">
-                                    <li><i class="icon-calendar"></i><strong>Posted
-                                            on:</strong> <?php the_time('M j, Y') ?>
+                                    <li><i class="icon-calendar"></i><strong>Дата:</strong> <?php the_time('M j, Y') ?>
                                     <li>
-                                    <li><i class="icon-user"></i><strong>Posted by:</strong>
+                                    <li><i class="icon-user"></i><strong>Автор:</strong>
                                         <?php the_author() ?>
                                     <li>
-                                    <li><i class="icon-comment"></i><strong>Comments:</strong>
+                                    <li><i class="icon-comment"></i><strong>Комментарии:</strong>
                                         <a href="<?php comment_link() ?>" title="Link"><?php comments_number() ?></a>
                                     <li>
                                         <?php if (get_the_tag_list()): ?>
