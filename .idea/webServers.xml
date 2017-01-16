@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="720b752c-b891-4897-871b-3a327c614a84" name="Easy-language" url="http://91.217.9.212">
+        <fileTransfer host="91.217.9.212" port="21" password="df9fdfcfdfe2dfe8df9cdffcdf99dfeddfc6dfcbdfc4" username="ralf000_language">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
