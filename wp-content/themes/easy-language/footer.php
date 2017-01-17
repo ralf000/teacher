@@ -22,30 +22,32 @@
                     </div>
 
                     <div class="span6">
-                    <?php
-                    wp_nav_menu(array(
-                        'theme_location' => 'footer-menu',
-                        'menu' => 'Footer Menu',
-                        'container' => '',
-                        'container_class' => '',
-                        'container_id' => '',
+                        <?php
+                        wp_nav_menu(array(
+                            'theme_location' => 'footer-menu',
+                            'menu' => 'Footer Menu',
+                            'container' => '',
+                            'container_class' => '',
+                            'container_id' => '',
 //                        'menu_class' => 'menu',
 //                        'menu_id' => '',
-                        'echo' => true,
-                        //'fallback_cb' => 'wp_page_menu',
-                        'before' => '',
-                        'after' => '</span>',
-                        'link_before' => '',
-                        'link_after' => '',
-                        'items_wrap' => '<span class="right"><ul class="footer_menu">%3$s</ul></span>',
-                        'depth' => 0,
-                        'walker' => '',
-                    ));
-                    ?>
+                            'echo' => true,
+                            //'fallback_cb' => 'wp_page_menu',
+                            'before' => '',
+                            'after' => '</span>',
+                            'link_before' => '',
+                            'link_after' => '',
+                            'items_wrap' => '<span class="right"><ul class="footer_menu">%3$s</ul></span>',
+                            'depth' => 0,
+                            'walker' => '',
+                        ));
+                        ?>
                     </div>
-                    
+
                 </div>
+                
             </div>
+            <!--            --><?php //require_once __DIR__ . '/inc/ya-metrika-informer.php'?>
         </div><!-- End Sub Footer -->
 
     </div>
@@ -55,5 +57,6 @@
 <div id="toTop" class="hidden-phone hidden-tablet">Back to Top</div>
 
 <?php wp_footer(); ?>
+<?php require_once __DIR__ . '/inc/ya-metrika-cnt.php' ?>
 </body>
 </html>
