@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="<?php bloginfo('charset'); ?>"/>
-    <title><?php wp_title(''); ?></title>
+    <title><?php bloginfo('name'); wp_title('|'); ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="yandex-verification" content="d7fa0f2f911a9fdd" />
 
