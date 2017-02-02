@@ -21,7 +21,7 @@
 <?php
 $portfolio = new WP_Query([
     'post_type' => 'post',
-    'cat' => [6,7,9],
+    'cat' => [6,7,9,16],
     'posts_per_page' => 8
 ]);
 ?>
