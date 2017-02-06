@@ -49,7 +49,7 @@ $portfolio = new WP_Query([
                             <h6><?= get_the_category(get_the_ID())[0]->name ?></h6>
                         <span class="gallery-hover-4col hidden-phone hidden-tablet">
                             <span class="gallery-icons">
-                                <a href="<?php the_post_thumbnail_url('full') ?>" class="item-zoom-link lightbox"
+                                <a href="<?php the_post_thumbnail_url('large') ?>" class="item-zoom-link lightbox"
                                    title="<?php the_title() ?>" data-rel="prettyPhoto"></a>
                                 <a href="<?php the_permalink() ?>" class="item-details-link"></a>
                             </span>
@@ -107,7 +107,7 @@ $portfolio = new WP_Query([
                         $flag4 = true; ?> item">
                             <?php if (get_the_post_thumbnail_url()): ?>
                                 <a href="<?php the_permalink() ?>">
-                                    <img src="<?php the_post_thumbnail_url('full') ?>" alt="<?php the_title() ?>"
+                                    <img src="<?php the_post_thumbnail_url('large') ?>" alt="<?php the_title() ?>"
                                          class="align-left blog-thumb-preview"/>
                                 </a>
                             <?php endif; ?>
@@ -204,6 +204,7 @@ $portfolio = new WP_Query([
     ================================================== -->
     <div class="span6">
 
+        <!--ВОСПИТАТЕЛЬНАЯ РАБОТА-->
         <?php
         $photos = new WP_Query([
             'post_type' => 'post',
@@ -231,7 +232,7 @@ $portfolio = new WP_Query([
                         <div class="<?php if (!isset($flag3)) echo 'active';
                         $flag3 = true; ?> item">
                             <a href="<?php the_permalink() ?>">
-                                <img src="<?php the_post_thumbnail_url('full') ?>" alt="<?php the_title() ?>"
+                                <img src="<?php the_post_thumbnail_url('large') ?>" alt="<?php the_title() ?>"
                                      width="100%" height="200px" class="align-left blog-thumb-preview"/>
                             </a>
                         </div>

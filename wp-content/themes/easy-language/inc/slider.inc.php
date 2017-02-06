@@ -14,7 +14,7 @@
                         <?php if (post_custom('slide_link')): ?>
                         <a target="_blank" href="<?= post_custom('slide_link'); ?>">
                             <?php endif; ?>
-                            <?php the_post_thumbnail('full') ?>
+                            <?php the_post_thumbnail('large') ?>
                             <p class="flex-caption"><?= get_the_title() ?></p>
                             <?php if (post_custom('slide_link')): ?>
                         </a>
